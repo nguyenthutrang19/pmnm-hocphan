@@ -5,6 +5,7 @@ Bài tập môn Phần mềm mã nguồn mở - Nhóm 2
 ##  Thông tin sinh viên
 * **Họ và tên:** Nguyễn Thu Trang
 * **Mã sinh viên:** 23T1020557
+* **Lớp:** K47C-CNTT/CNPM
 
 
 ---
