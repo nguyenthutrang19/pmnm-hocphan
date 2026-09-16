@@ -37,3 +37,8 @@ Dưới đây là 5 phần mềm mã nguồn mở phổ biến mà tôi đang s�
 5. **Python**
    * **Mô tả:** Ngôn ngữ lập trình bậc cao.
    * **Giấy phép:** Python Software Foundation License (PSF).
+## Giấy phép
+
+Mã nguồn trong kho này được phát hành theo [Giấy phép MIT](LICENSE).
+
+SPDX-License-Identifier: MIT
