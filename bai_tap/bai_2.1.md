@@ -1,5 +1,5 @@
 Lựa chọn: Dự án 1 — Thư viện Python xử lý tiếng Việt muốn được dùng rộng rãi nhất có thể
-.
+
 Giấy phép đề xuất: MIT License.   
 
 Lập luận chọn giấy phép:
