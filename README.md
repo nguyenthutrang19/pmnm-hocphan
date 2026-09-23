@@ -42,3 +42,14 @@ Dưới đây là 5 phần mềm mã nguồn mở phổ biến mà tôi đang s�
 Mã nguồn trong kho này được phát hành theo [Giấy phép MIT](LICENSE).
 
 SPDX-License-Identifier: MIT
+---
+## Bài 2.2 — Phân tích pip-licenses & Nghĩa vụ Copyleft
+
+### 1. Thực thi lệnh trong Terminal
+```bash
+# Cài đặt pip-licenses và các thư viện mẫu
+pip install pip-licenses requests urllib3 numpy pandas scikit-learn Flask PyYAML certifi jinja2 PyQt5
+
+# Tạo thư mục và xuất kết quả
+mkdir -p bai_tap
+pip-licenses --format=markdown --output-file=bai_tap/bai_02_licenses.md
