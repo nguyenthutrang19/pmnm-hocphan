@@ -10,3 +10,14 @@
 | requests | 2.31.0 | Apache Software License (Apache 2.0) |
 | scikit-learn | 1.3.0 | BSD-3-Clause |
 | urllib3 | 2.0.4 | MIT License |
+---
+## Phân tích pip-licenses & Nghĩa vụ Copyleft
+
+### 1. Thực thi lệnh trong Terminal
+```bash
+# Cài đặt pip-licenses và các thư viện mẫu
+pip install pip-licenses requests urllib3 numpy pandas scikit-learn Flask PyYAML certifi jinja2 PyQt5
+
+# Tạo thư mục và xuất kết quả
+mkdir -p bai_tap
+pip-licenses --format=markdown --output-file=bai_tap/bai_02_licenses.md
