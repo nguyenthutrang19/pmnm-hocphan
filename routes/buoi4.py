@@ -59,7 +59,7 @@ POSTS = [
     {
         "id": 1,
         "title": "Chào Flask",
-        "author": "hoang",
+        "author": "Thu Trang",
         "content": "Flask là một micro-framework...",
     },
 ]
