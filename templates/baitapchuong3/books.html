@@ -1,0 +1,61 @@
+{% extends "baitapchuong3/layout.html" %}
+{% block title %}Danh Sách Sách{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Danh Sách Sách</h1>
+
+<!-- Thanh liên kết theo thể loại -->
+<div class="flex flex-wrap gap-2 mb-6">
+    <a href="{{ url_for('baitapchuong3.book_list') }}" 
+       class="px-3 py-1 rounded-full text-sm {% if not selected_category %}bg-indigo-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">
+       Tất cả
+    </a>
+    {% for cat in categories %}
+    <a href="{{ url_for('baitapchuong3.book_list', category=cat) }}" 
+       class="px-3 py-1 rounded-full text-sm {% if selected_category.lower() == cat.lower() %}bg-indigo-600 text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %}">
+       {{ cat }}
+    </a>
+    {% endfor %}
+</div>
+
+<!-- Bảng sách -->
+<div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-200">
+    <table class="w-full text-left border-collapse">
+        <thead>
+            <tr class="bg-gray-100 border-b border-gray-200 text-sm font-semibold text-gray-600">
+                <th class="p-3">ID</th>
+                <th class="p-3">Tên sách</th>
+                <th class="p-3">Tác giả</th>
+                <th class="p-3">Năm</th>
+                <th class="p-3">Thể loại</th>
+                <th class="p-3">Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 text-sm">
+            {% for book in books %}
+            <tr class="hover:bg-gray-50">
+                <td class="p-3">#{{ book.id }}</td>
+                <td class="p-3 font-medium text-indigo-600 hover:underline">
+                    <!-- Liên kết đến trang chi tiết -->
+                    <a href="{{ url_for('baitapchuong3.book_detail', book_id=book.id) }}">{{ book.title }}</a>
+                </td>
+                <td class="p-3">{{ book.author }}</td>
+                <td class="p-3">{{ book.year }}</td>
+                <td class="p-3"><span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs">{{ book.category }}</span></td>
+                <td class="p-3">
+                    {% if book.available %}
+                    <span class="text-green-600 font-semibold">Sẵn sàng</span>
+                    {% else %}
+                    <span class="text-red-500 font-semibold">Đã mượn</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="p-4 text-center text-gray-500">Không tìm thấy sách nào thuộc thể loại này.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
