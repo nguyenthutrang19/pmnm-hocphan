@@ -6,9 +6,8 @@
 - **Lớp:** CNTT_K47C
 
 ### Vì sao tôi muốn học về phần mềm mã nguồn mở?
-Từ năm nhất đại học, tôi đã được nghe nhiều về "mã nguồn mở" và hiểu sơ sơ đây là những phần mềm được nhiều người cùng đóng góp. Tuy nhiên, tôi vẫn luôn tò mò về cách thức cộng đồng phối hợp làm việc ra sao, vì sao các công ty lớn lại chấp nhận dùng và tài trợ cho nó, cũng như làm thế nào mà mã nguồn mở vẫn tồn tại và phát triển mạnh mẽ đến vậy. Tôi muốn học môn này để giải đáp những thắc mắc đó. Đồng thời, tôi kỳ vọng môn học sẽ giúp mình biết cách đọc và hiểu mã nguồn của người khác, cũng như học cách viết code sao cho người khác dễ đọc, dễ bảo trì.
-
-### Danh sách 5 phần mềm mã nguồn mở sử dụng hằng ngày
+Từ những năm đầu đại học, khái niệm "mã nguồn mở" đã luôn thu hút sự tò mò của tôi. Tôi thắc mắc làm thế nào vô số lập trình viên xa lạ trên toàn thế giới lại có thể phối hợp nhịp nhàng để tạo nên những sản phẩm khổng lồ như Linux hay Python. Bên cạnh đó, việc các tập đoàn công nghệ lớn sẵn sàng dùng, đóng góp và tài trợ cho mã nguồn mở cũng là một bài toán vận hành đầy thú vị mà tôi muốn tìm lời giải qua môn học này.
+Quan trọng hơn, đây là cơ hội để tôi cải thiện kỹ năng lập trình thực tế. Thay vì chỉ viết code cho các bài tập cá nhân, tôi muốn rèn luyện khả năng đọc–hiểu nhanh mã nguồn của người khác, học cách viết code sao cho rõ ràng, dễ bảo trì, cũng như sử dụng thành thạo các công cụ như Git và GitHub. Đây sẽ là nền tảng quan trọng giúp tôi tự tin hơn khi tham gia vào các dự án làm việc nhóm sau này.
 1. **Linux** - Giấy phép: GNU General Public License v2.0.
 2. **PostgreSQL** - Giấy phép: PostgreSQL License.
 3. **Git** - Giấy phép: GNU General Public License v2.0.
