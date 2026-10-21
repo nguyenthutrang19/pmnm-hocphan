@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        button {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #4338ca;
+        }
+        #api-result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .success {
+            background-color: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Xin chào từ Flask! 🎉</h1>
+        <p>Trang này được render từ route <code>/</code></p>
+        
+        <!-- Nút bấm gọi API đến /api/hello -->
+        <button onclick="callApi()">Gọi API Backend</button>
+        
+        <div id="api-result"></div>
+    </div>
+
+    <script>
+        async function callApi() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.className = '';
+            resultDiv.innerText = 'Đang tải dữ liệu...';
+
+            try {
+                // Gọi tới route /api/hello trong Flask của bạn
+                const response = await fetch('/api/hello');
+                const data = await response.json();
+                
+                // Hiển thị kết quả trả về từ JSON
+                resultDiv.className = 'success';
+                resultDiv.innerHTML = `<strong>Phản hồi:</strong> ${data.message} <br><small>Trạng thái: ${data.status}</small>`;
+            } catch (error) {
+                resultDiv.style.backgroundColor = '#fef2f2';
+                resultDiv.style.color = '#b91c1c';
+                resultDiv.innerText = 'Lỗi khi gọi API!';
+                console.error(error);
+            }
+        }
+    </script>
+
+</body>
+</html>
