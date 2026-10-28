@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Chương 5{% endblock %}</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        /* Khung chính rộng hơn, căn giữa màn hình */
+        .wrapper {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #212529;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f1f3f5;
+            padding-bottom: 12px;
+        }
+        /* CSS dùng chung cho các Form */
+        .form-row {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 130px;
+        }
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            outline: none;
+        }
+        input[type="text"]:focus, select:focus {
+            border-color: #0d6efd;
+        }
+        .btn-submit {
+            padding: 10px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #0d6efd;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            height: 41px;
+        }
+        .btn-submit:hover { background-color: #0b5ed7; }
+        .btn-green { background-color: #198754; }
+        .btn-green:hover { background-color: #157347; }
+        
+        .error {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+        .result-box {
+            margin-top: 25px;
+            padding: 15px 20px;
+            background-color: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            color: #1b5e20;
+            font-weight: bold;
+            font-size: 17px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    {% include '_navbar.html' %}
+
+    <div class="wrapper">
+        <div class="card">
+            {% block content %}{% endblock %}
+        </div>
+        
+        {% include '_footer.html' %}
+    </div>
+
+</body>
+</html>

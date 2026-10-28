@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% from "_macros.html" import item_card, pagination %}
+{% block title %}Thực đơn{% endblock %} {% block styles %} {{ super() }}
+<style>
+  .custom-card {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .menu-header {
+    background: linear-gradient(135deg, #5c4033 0%, #8b5a2b 100%);
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="container py-4" style="max-width: 900px">
+  <div class="card custom-card shadow-lg border-0">
+    <div class="menu-header p-4 text-center text-white">
+      <h1 class="h3 mb-0 fw-bold">
+        <i class="bi bi-journal-text me-2"></i>Thực đơn (Trang {{ page }}/{{
+        pages }})
+      </h1>
+    </div>
+
+    <div class="card-body p-4 p-md-5 bg-white">
+      <!-- Hiển thị các món ăn theo dạng Card bằng Macro -->
+      <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        {% for item in items %}
+        <div class="col">{{ item_card(item) }}</div>
+        {% endfor %}
+      </div>
+
+      <!-- Gọi Macro Phân Trang -->
+      {{ pagination(page, pages, 'menu') }}
+    </div>
+  </div>
+</div>
+{% endblock %}

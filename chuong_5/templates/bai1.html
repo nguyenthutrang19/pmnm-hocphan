@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Bài 1 - Máy tính cơ bản{% endblock %}
+
+{% block content %}
+    <h2>Bài 1: Máy tính cơ bản</h2>
+
+    <form method="POST" action="/bai1">
+        <div class="form-row">
+            <div class="field-group">
+                <label>Số thứ nhất (a)</label>
+                <input type="text" name="a" value="{{ a }}" placeholder="Nhập số thứ nhất">
+                {% if error_a %}<span class="error">{{ error_a }}</span>{% endif %}
+            </div>
+
+            <div class="field-group" style="flex: 0 0 90px; min-width: 90px;">
+                <label>Phép toán</label>
+                <select name="op">
+                    <option value="+" {% if op == '+' %}selected{% endif %}>+</option>
+                    <option value="-" {% if op == '-' %}selected{% endif %}>-</option>
+                    <option value="*" {% if op == '*' %}selected{% endif %}>*</option>
+                    <option value="/" {% if op == '/' %}selected{% endif %}>/</option>
+                </select>
+                {% if error_op %}<span class="error">{{ error_op }}</span>{% endif %}
+            </div>
+
+            <div class="field-group">
+                <label>Số thứ hai (b)</label>
+                <input type="text" name="b" value="{{ b }}" placeholder="Nhập số thứ hai">
+                {% if error_b %}<span class="error">{{ error_b }}</span>{% endif %}
+            </div>
+
+            <button type="submit" class="btn-submit">=</button>
+        </div>
+    </form>
+
+    {% if result %}
+        <div class="result-box">Mong đợi: {{ result }}</div>
+    {% endif %}
+{% endblock %}

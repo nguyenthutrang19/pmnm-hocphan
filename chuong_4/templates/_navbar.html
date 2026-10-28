@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <!-- Giao diện PC: Grid 3 cột căn giữa tuyệt đối -->
+  <div
+    class="container d-none d-lg-grid"
+    style="grid-template-columns: 1fr auto 1fr; align-items: center"
+  >
+    <div>
+      <a class="navbar-brand" href="/">☕ Sông Hương</a>
+    </div>
+    <ul class="navbar-nav flex-row mb-0">
+      <li class="nav-item"><a class="nav-link px-3" href="/">Trang chủ</a></li>
+      <li class="nav-item">
+        <a class="nav-link px-3" href="/menu">Thực đơn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link px-3" href="/contact">Liên hệ</a>
+      </li>
+    </ul>
+    <div></div>
+  </div>
+
+  <!-- Giao diện Mobile -->
+  <div class="container d-lg-none">
+    <a class="navbar-brand" href="/">☕ Sông Hương</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavMobile"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavMobile">
+      <ul class="navbar-nav mt-2">
+        <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+        <li class="nav-item"><a class="nav-link" href="/menu">Thực đơn</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Liên hệ</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

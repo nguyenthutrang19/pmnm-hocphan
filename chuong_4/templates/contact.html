@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Liên hệ{% endblock %} {% block
+content %}
+<div class="container" style="max-width: 600px">
+  <div class="card shadow-sm border-0 rounded-4">
+    <div class="card-body p-4 text-center">
+      <h1 class="h3 text-primary mb-4">Thông tin liên hệ</h1>
+      <p class="fs-5"><strong>🏬 Tên quán:</strong> {{ shop.name }}</p>
+      <p class="fs-5"><strong>📍 Địa chỉ:</strong> {{ shop.address }}</p>
+      <p class="fs-5 text-danger fw-bold">
+        <strong>📞 Điện thoại: 0389415267</strong> {{ shop.phone }}
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

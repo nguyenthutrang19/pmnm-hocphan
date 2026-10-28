@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Bài 3 - Tính chỉ số BMI{% endblock %}
+
+{% block content %}
+    <h2>Bài 3: Tính chỉ số BMI</h2>
+
+    {% macro bmi_result_content() %}
+        Mong đợi: <strong>{{ bmi_val }}</strong> · {{ classification }} {{ ideal_text }}
+    {% endmacro %}
+
+    <form method="POST" action="/bai3">
+        <div class="form-row">
+            <div class="field-group">
+                <label>Chiều cao (cm)</label>
+                <input type="text" name="height" value="{{ height }}" placeholder="Ví dụ: 170">
+                {% if err_height %}<span class="error">{{ err_height }}</span>{% endif %}
+            </div>
+
+            <div class="field-group">
+                <label>Cân nặng (kg)</label>
+                <input type="text" name="weight" value="{{ weight }}" placeholder="Ví dụ: 65">
+                {% if err_weight %}<span class="error">{{ err_weight }}</span>{% endif %}
+            </div>
+
+            <button type="submit" class="btn-submit" style="background-color: #0d6efd;">Tính BMI</button>
+        </div>
+    </form>
+
+    {% if bmi_val %}
+        {% if classification == "Thiếu cân" %}
+            <div class="result-box" style="border-left-color: #d97706; color: #d97706; background-color: #fef3c7;">
+                {{ bmi_result_content() }}
+            </div>
+        {% elif classification == "Bình thường" %}
+            <div class="result-box" style="border-left-color: #15803d; color: #15803d; background-color: #dcfce7;">
+                {{ bmi_result_content() }}
+            </div>
+        {% elif classification == "Thừa cân" %}
+            <div class="result-box" style="border-left-color: #d97706; color: #d97706; background-color: #fef3c7;">
+                {{ bmi_result_content() }}
+            </div>
+        {% else %}
+            <div class="result-box" style="border-left-color: #dc2626; color: #dc2626; background-color: #fee2e2;">
+                {{ bmi_result_content() }}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Bài 2 - Tính điểm học phần{% endblock %}
+
+{% block content %}
+    <h2>Bài 2: Tính điểm học phần</h2>
+
+    <form method="POST" action="/bai2">
+        <div class="form-row">
+            <div class="field-group">
+                <label>CC (10%)</label>
+                <input type="text" name="cc" value="{{ cc }}" placeholder="Điểm CC">
+                {% if err_cc %}<span class="error">{{ err_cc }}</span>{% endif %}
+            </div>
+
+            <div class="field-group">
+                <label>GK (30%)</label>
+                <input type="text" name="gk" value="{{ gk }}" placeholder="Điểm GK">
+                {% if err_gk %}<span class="error">{{ err_gk }}</span>{% endif %}
+            </div>
+
+            <div class="field-group">
+                <label>CK (60%)</label>
+                <input type="text" name="ck" value="{{ ck }}" placeholder="Điểm CK">
+                {% if err_ck %}<span class="error">{{ err_ck }}</span>{% endif %}
+            </div>
+
+            <button type="submit" class="btn-submit btn-green">Tính</button>
+        </div>
+    </form>
+
+    {% if result %}
+        <div class="result-box">Mong đợi: {{ result }}</div>
+    {% endif %}
+{% endblock %}
