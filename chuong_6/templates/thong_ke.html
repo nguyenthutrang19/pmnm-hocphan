@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Thống kê sinh viên{% endblock %}
+
+{% block content %}
+<!-- Tiêu đề & Nút quay lại -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Thống Kê Học Lực</h3>
+    <a href="/students" class="btn btn-secondary btn-sm">Quay lại danh sách</a>
+</div>
+
+<!-- 2 Thẻ tổng quan -->
+<div class="row mb-4">
+    <div class="col-6">
+        <div class="p-3 border rounded text-center">
+            <div class="text-muted small">Tổng số sinh viên</div>
+            <div class="fs-3 fw-bold">{{ total }}</div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="p-3 border rounded text-center">
+            <div class="text-muted small">Điểm GPA trung bình</div>
+            <div class="fs-3 fw-bold">{{ avg }}</div>
+        </div>
+    </div>
+</div>
+
+<!-- Bảng chi tiết tối giản -->
+<table class="table table-bordered align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Xếp loại</th>
+            <th>Thang điểm</th>
+            <th class="text-center">Số lượng</th>
+            <th>Danh sách sinh viên</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Giỏi -->
+        <tr>
+            <td class="fw-bold text-success">Giỏi</td>
+            <td>&ge; 8.0</td>
+            <td class="text-center fw-bold">{{ ds_gioi|length }}</td>
+            <td>
+                {% for sv in ds_gioi %}
+                    <span class="badge bg-success-subtle text-success border border-success me-1">{{ sv.name }} ({{ sv.gpa }})</span>
+                {% else %}
+                    <span class="text-muted small">Không có</span>
+                {% endfor %}
+            </td>
+        </tr>
+
+        <!-- Khá -->
+        <tr>
+            <td class="fw-bold text-primary">Khá</td>
+            <td>6.5 – 7.9</td>
+            <td class="text-center fw-bold">{{ ds_kha|length }}</td>
+            <td>
+                {% for sv in ds_kha %}
+                    <span class="badge bg-primary-subtle text-primary border border-primary me-1">{{ sv.name }} ({{ sv.gpa }})</span>
+                {% else %}
+                    <span class="text-muted small">Không có</span>
+                {% endfor %}
+            </td>
+        </tr>
+
+        <!-- Trung bình -->
+        <tr>
+            <td class="fw-bold text-warning">Trung bình</td>
+            <td>5.0 – 6.4</td>
+            <td class="text-center fw-bold">{{ ds_tb|length }}</td>
+            <td>
+                {% for sv in ds_tb %}
+                    <span class="badge bg-warning-subtle text-warning border border-warning me-1">{{ sv.name }} ({{ sv.gpa }})</span>
+                {% else %}
+                    <span class="text-muted small">Không có</span>
+                {% endfor %}
+            </td>
+        </tr>
+
+        <!-- Yếu -->
+        <tr>
+            <td class="fw-bold text-danger">Yếu</td>
+            <td>&lt; 5.0</td>
+            <td class="text-center fw-bold">{{ ds_yeu|length }}</td>
+            <td>
+                {% for sv in ds_yeu %}
+                    <span class="badge bg-danger-subtle text-danger border border-danger me-1">{{ sv.name }} ({{ sv.gpa }})</span>
+                {% else %}
+                    <span class="text-muted small">Không có</span>
+                {% endfor %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

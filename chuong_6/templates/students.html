@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Danh sách sinh viên{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Danh sách sinh viên</h2>
+    <!-- Nút xem thống kê mới thêm -->
+    <a href="/thong-ke" class="btn btn-primary">
+        Xem thống kê
+    </a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>MSSV</th>
+            <th>Họ và tên</th>
+            <th>Điểm GPA</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.mssv }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.gpa }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4" class="text-center">Chưa có dữ liệu sinh viên. Hãy truy cập <a href="/them-mau">/them-mau</a> để tạo dữ liệu.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
