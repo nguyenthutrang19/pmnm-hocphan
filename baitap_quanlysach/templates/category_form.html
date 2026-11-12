@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ action }} Danh Mục{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h3 class="mb-3">{{ action }} Danh Mục</h3>
+        <form method="post" class="border p-4 rounded">
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Tên danh mục</label>
+                <input type="text" name="name" class="form-control" maxlength="100" required value="{{ request.form.get('name', category.name if category else '') }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Mô tả</label>
+                <textarea name="description" class="form-control" rows="3" maxlength="255">{{ request.form.get('description', category.description if category else '') }}</textarea>
+            </div>
+            <div class="d-flex justify-content-between">
+                <a href="{{ url_for('book_management.list_categories') }}" class="btn btn-secondary">Quay lại</a>
+                <button type="submit" class="btn btn-dark">Lưu</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

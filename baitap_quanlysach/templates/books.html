@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Danh sách Sách{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>
+        {% if selected_category %}
+            Sách danh mục: {{ selected_category.name }}
+        {% else %}
+            Tất Cả Sách
+        {% endif %}
+    </h3>
+    <a href="{{ url_for('book_management.create_book', category_id=selected_category.id) if selected_category else url_for('book_management.create_book') }}" class="btn btn-dark btn-sm">
+        Thêm sách
+    </a>
+</div>
+
+<div class="mb-3">
+    <span class="text-muted small me-2">Lọc theo danh mục:</span>
+    <a href="{{ url_for('book_management.list_books') }}" class="btn btn-sm {% if not selected_category %}btn-dark{% else %}btn-outline-secondary{% endif %} me-1">Tất cả</a>
+    {% for cat in categories %}
+        <a href="{{ url_for('book_management.list_books', category_id=cat.id) }}" class="btn btn-sm {% if selected_category and selected_category.id == cat.id %}btn-dark{% else %}btn-outline-secondary{% endif %} me-1">
+            {{ cat.name }}
+        </a>
+    {% endfor %}
+</div>
+
+<table class="table table-bordered table-striped align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên sách</th>
+            <th>Tác giả</th>
+            <th>Danh mục</th>
+            <th class="text-end">Giá bán</th>
+            <th class="text-end">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td class="fw-bold">{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td><span class="badge bg-secondary">{{ book.category.name }}</span></td>
+            <td class="text-end">{{ "{:,.0f}".format(book.price) }} đ</td>
+            <td class="text-end">
+                <a href="{{ url_for('book_management.edit_book', id=book.id) }}" class="btn btn-outline-secondary btn-sm">Sửa</a>
+                <form action="{{ url_for('book_management.delete_book', id=book.id) }}" method="post" class="d-inline" onsubmit="return confirm('Xác nhận xóa cuốn sách này?');">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6" class="text-center text-muted">Không có cuốn sách nào trong mục này.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

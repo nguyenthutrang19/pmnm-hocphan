@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Danh mục sách{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Danh Mục Sách</h3>
+    <a href="{{ url_for('book_management.create_category') }}" class="btn btn-dark btn-sm">Thêm danh mục</a>
+</div>
+
+<table class="table table-bordered table-striped align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên danh mục</th>
+            <th>Mô tả</th>
+            <th class="text-center">Số lượng sách</th>
+            <th class="text-end">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cat in categories %}
+        <tr>
+            <td>{{ cat.id }}</td>
+            <td class="fw-bold">{{ cat.name }}</td>
+            <td>{{ cat.description }}</td>
+            <td class="text-center fw-bold">{{ cat.books|length }}</td>
+            <td class="text-end">
+                <a href="{{ url_for('book_management.list_books', category_id=cat.id) }}" class="btn btn-outline-primary btn-sm">Quản lý sách</a>
+                <a href="{{ url_for('book_management.edit_category', id=cat.id) }}" class="btn btn-outline-secondary btn-sm">Sửa</a>
+                <form action="{{ url_for('book_management.delete_category', id=cat.id) }}" method="post" class="d-inline" onsubmit="return confirm('Xóa danh mục này sẽ xóa toàn bộ sách thuộc danh mục. Xác nhận?');">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" class="text-center text-muted">Chưa có danh mục nào.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard Quản Lý{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Dashboard Quản Lý</h3>
+    {% if total_categories == 0 %}
+        <form action="{{ url_for('book_management.seed_data') }}" method="post">
+            <button type="submit" class="btn btn-outline-secondary btn-sm">Tạo dữ liệu mẫu</button>
+        </form>
+    {% endif %}
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4 mb-3 mb-md-0">
+        <div class="p-3 border rounded">
+            <div class="text-muted small">Tổng số danh mục</div>
+            <div class="fs-3 fw-bold">{{ total_categories }}</div>
+            <a href="{{ url_for('book_management.list_categories') }}" class="small text-decoration-none">Xem danh mục</a>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3 mb-md-0">
+        <div class="p-3 border rounded">
+            <div class="text-muted small">Tổng số sách</div>
+            <div class="fs-3 fw-bold">{{ total_books }}</div>
+            <a href="{{ url_for('book_management.list_books') }}" class="small text-decoration-none">Xem tất cả sách</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-3 border rounded">
+            <div class="text-muted small">Tổng giá trị kho sách</div>
+            <div class="fs-3 fw-bold">{{ "{:,.0f}".format(total_value) }} đ</div>
+            <span class="small text-muted">Tính theo đơn giá hiện tại</span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5>Danh mục & Số lượng sách</h5>
+            <a href="{{ url_for('book_management.create_category') }}" class="btn btn-dark btn-sm">Thêm danh mục</a>
+        </div>
+        <table class="table table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Danh mục</th>
+                    <th class="text-center">Số sách</th>
+                    <th class="text-end">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cat in categories %}
+                <tr>
+                    <td class="fw-semibold">{{ cat.name }}</td>
+                    <td class="text-center fw-bold">{{ cat.books|length }}</td>
+                    <td class="text-end">
+                        <a href="{{ url_for('book_management.list_books', category_id=cat.id) }}" class="btn btn-outline-primary btn-sm">Xem sách</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" class="text-center text-muted">Chưa có danh mục nào.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5>Sách mới thêm gần đây</h5>
+            <a href="{{ url_for('book_management.create_book') }}" class="btn btn-dark btn-sm">Thêm sách</a>
+        </div>
+        <table class="table table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tên sách</th>
+                    <th>Danh mục</th>
+                    <th class="text-end">Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in recent_books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td><span class="badge bg-secondary">{{ book.category.name }}</span></td>
+                    <td class="text-end">{{ "{:,.0f}".format(book.price) }} đ</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" class="text-center text-muted">Chưa có sách nào.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
